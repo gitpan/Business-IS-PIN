@@ -22,10 +22,10 @@ SYNOPSIS
 
         my $kt = Business::IS::PIN->new('0902862349');
 
-        if ( $kt->valid and $kt->person ) {
+        if ($kt->valid and $kt->person) {
             printf "You are a Real Boy(TM) born on %d-%d-%d\n",
                 $kt->year, $kt->month, $kt->day;
-        } elsif ( $kt->valid and $kt->company ) {
+        } elsif ($kt->valid and $kt->company) {
             warn "Begone, you spawn of capitalism!";
         } else {
             die "EEEK!";

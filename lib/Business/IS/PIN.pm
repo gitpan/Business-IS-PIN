@@ -1,10 +1,9 @@
 package Business::IS::PIN;
+our $VERSION = '0.06';
 use strict;
 
-use base qw(Exporter);
+use Exporter 'import';
 use List::Util qw(sum);
-
-our $VERSION = '0.05';
 
 our %EXPORT_TAGS = (
     all => [ qw<
@@ -15,6 +14,8 @@ our %EXPORT_TAGS = (
 );
 
 our @EXPORT_OK = @{ $EXPORT_TAGS{ all } };
+
+=encoding utf8
 
 =head1 NAME
 
@@ -157,7 +158,7 @@ sub person
 {
     my $kt = ref $_[0] ? ${$_[0]} : $_[0];
 
-    $kt =~ / ^ [0-2] /x;
+    $kt =~ / ^ (?:[0-2]|3[01]) /x;
 }
 
 =head2 company
@@ -171,7 +172,7 @@ sub company
 {
     my $kt = ref $_[0] ? ${$_[0]} : $_[0];
 
-    $kt =~ / ^ [3-5] /x
+    $kt =~ / ^ (?:3[2-9]|[45]) /x
 }
 
 =head2 year
@@ -269,3 +270,5 @@ This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 =cut
+
+1;
